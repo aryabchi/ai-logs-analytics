@@ -9,3 +9,8 @@ CrewAI Demo App that calls tools for log parsing and report generation
 # Agent roles
 - Analyst
 - Technical writer
+
+# Run
+```
+$ python main.py
+```
