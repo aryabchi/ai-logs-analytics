@@ -54,7 +54,7 @@ def parse_incidents(log_content: str) -> str:
                         "severity": severity,
                     }
                 )
-            except Exception as e:
+            except Exception:
                 # Пропускаем некорректную строку, продолжаем обработку
                 continue
 
