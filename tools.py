@@ -1,4 +1,5 @@
 from crewai.tools import tool
+from utils import validate_input_file
 
 
 @tool
@@ -72,13 +73,15 @@ def parse_incidents(log_content: str) -> str:
             )
             json_items.append(item)
 
-        return f"[{', '.join(json_items)}]"
+        incidents_list = f"[{', '.join(json_items)}]"
+        # wrap as pydantic model expects
+        return f'{{"incidents": {incidents_list}}}'
 
     except Exception as e:
         return f"Ошибка парсинга инцидентов: {str(e)}"
 
 
-@tool
+@tool(result_as_answer=True)
 def generate_markdown_report(analysis_summary: str) -> str:
     """
     Формирует итоговый отчёт в формате Markdown.
@@ -116,3 +119,8 @@ def generate_markdown_report(analysis_summary: str) -> str:
 
     except Exception as e:
         return f"Ошибка генерации отчёта: {str(e)}"
+
+
+if __name__ == "__main__":
+    log_content = validate_input_file("logs/log.txt")
+    print(parse_incidents(log_content))

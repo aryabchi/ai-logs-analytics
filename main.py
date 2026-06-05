@@ -1,5 +1,4 @@
 from crewai import Crew
-from pathlib import Path
 
 from utils import validate_input_file
 from tasks import parse_task, report_task
