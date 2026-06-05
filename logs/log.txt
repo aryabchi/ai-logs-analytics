@@ -1,0 +1,10 @@
+INFO [payment-service]: Processing transaction #123
+ERROR [payment-service]: TimeoutError: DB connection pool exhausted
+INFO [auth-service]: User login successful
+WARN [notification-service]: Email delivery delayed
+ERROR [auth-service]: ConnectionError: LDAP server unreachable
+INFO [payment-service]: Retry attempt 1
+ERROR [payment-service]: TimeoutError: DB query timeout after 5s
+INFO [gateway]: Request forwarded to payment-service
+ERROR [notification-service]: SMTPError: Connection refused
+INFO [auth-service]: Fallback to local cache
